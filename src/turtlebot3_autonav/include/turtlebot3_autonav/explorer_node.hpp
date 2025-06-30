@@ -1,10 +1,6 @@
 #pragma once
 
-#include <memory>
-#include <vector>
-#include <string>
 
-#include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "geometry_msgs/msg/point.hpp"

@@ -2,3 +2,8 @@ build/
 install/
 log/
 .ropeproject/
+.clangd
+.cache/
+src/turtlebot3_simulations/
+src/turtlebot3/
+compile_commands.json

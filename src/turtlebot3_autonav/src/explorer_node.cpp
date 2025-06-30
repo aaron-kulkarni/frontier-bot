@@ -1,9 +1,7 @@
 #include <memory>
 #include <vector>
 #include <string>
-#include <chrono>
 #include <cmath>
-#include <algorithm>
 #include <limits>
 
 #include "rclcpp/rclcpp.hpp"
@@ -86,16 +84,12 @@ private:
   void timer_callback()
   {
     RCLCPP_INFO(this->get_logger(), "Timer callback triggered.");
-    if (!latest_map_) {
-      RCLCPP_WARN(this->get_logger(), "No map received yet.");
-      return;
-    }
-    if (!nav_to_pose_client_->wait_for_action_server(0ms)) {
-      RCLCPP_WARN(this->get_logger(), "Nav2 action server not available.");
-      return;
-    }
     if (navigating_) {
-      RCLCPP_INFO(this->get_logger(), "Already navigating to a goal.");
+      RCLCPP_INFO(this->get_logger(), "Already navigating to a goal. Will not send a new goal.");
+      return;
+    }
+    if (!latest_map_) {
+      RCLCPP_WARN(this->get_logger(), "No map received yet, cannot explore.");
       return;
     }
 
