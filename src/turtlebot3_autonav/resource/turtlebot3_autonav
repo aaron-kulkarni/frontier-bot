@@ -1,0 +1,3 @@
+slam_ws/src/turtlebot3_autonav/resource/turtlebot3_autonav
+```
+This file marks the `turtlebot3_autonav` package for the ament Python package index. It is required for ROS 2 Python packages to be discoverable by the build system.
