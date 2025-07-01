@@ -7,10 +7,9 @@ from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable, Includ
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-import sys
-
 from ament_index_python.packages import get_package_share_directory
 from launch.actions import TimerAction
+from launch_ros.actions import Node
 
 def generate_launch_description():
     # Set TURTLEBOT3_MODEL environment variable
@@ -55,17 +54,10 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}]
     )
 
-    # Node to publish initial pose inside map bounds at startup (Python node workaround)
-    # initial_pose_publisher = Node(
-    #     package='turtlebot3_initial_pose_pub',
-    #     executable='initial_pose_pub',
-    #     name='initial_pose_publisher',
-    #     output='screen',
-    #     parameters=[{'use_sim_time': use_sim_time}],
-    #     prefix=sys.executable + ' '
-    # )
+
 
     # Group actions for clarity
+
     return LaunchDescription([
         DeclareLaunchArgument(
             'turtlebot3_model',
@@ -88,14 +80,21 @@ def generate_launch_description():
         gazebo_launch,
 
         # Publish initial pose after Gazebo starts, before navigation stack
-        # TimerAction(
-        #     period=6.0,
-        #     actions=[initial_pose_publisher]
-        # ),
+        TimerAction(
+            period=6.0,
+            actions=[
+                Node(
+                    package='turtlebot3_autonav',
+                    executable='initial_pose_pub.py',
+                    name='initial_pose_publisher',
+                    output='screen'
+                )
+            ]
+        ),
 
         # Delay launching navigation and explorer_node to allow Gazebo and /clock to start
         TimerAction(
-            period=7.0,
+            period=8.0,
             actions=[
                 GroupAction([
                     nav2_slam_launch,

@@ -7,3 +7,4 @@ log/
 src/turtlebot3_simulations/
 src/turtlebot3/
 compile_commands.json
+*.egg-info/
