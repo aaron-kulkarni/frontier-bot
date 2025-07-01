@@ -1,27 +1,26 @@
-from setuptools import find_packages, setup
+from setuptools import setup, find_packages
 import glob
 
-package_name = 'turtlebot3_autonav'
+package_name = 'turtlebot3_initial_pose_pub'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.1.0',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', glob.glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='aaronk',
     maintainer_email='aaronk@todo.todo',
-    description='Autonomous TurtleBot3 simulation, mapping, and navigation launch package for ROS 2 Kilted.',
+    description='Standalone initial pose publisher node for TurtleBot3 simulation (ROS 2).',
     license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'initial_pose_pub = turtlebot3_autonav.initial_pose_pub:main',
+            'initial_pose_pub = turtlebot3_initial_pose_pub.initial_pose_pub:main',
         ],
     },
 )

@@ -1,0 +1,2 @@
+[console_scripts]
+initial_pose_pub = turtlebot3_autonav.initial_pose_pub:main

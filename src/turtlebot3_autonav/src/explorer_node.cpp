@@ -29,6 +29,8 @@ public:
   ExplorerNode()
   : Node("explorer_node")
   {
+
+
     RCLCPP_INFO(this->get_logger(), "Explorer node starting up...");
 
     map_sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
@@ -281,9 +283,10 @@ private:
     goal_msg.pose.pose.position = safe_goal;
     goal_msg.pose.pose.orientation.w = 1.0; // face forward
 
-    navigating_ = true;
-
     auto send_goal_options = rclcpp_action::Client<NavigateToPose>::SendGoalOptions();
+
+
+
     send_goal_options.result_callback =
       [this, safe_goal](const GoalHandleNavigateToPose::WrappedResult & result) {
         navigating_ = false;
@@ -301,7 +304,10 @@ private:
         }
       };
 
-    nav_to_pose_client_->async_send_goal(goal_msg, send_goal_options);
+    auto future_goal_handle = nav_to_pose_client_->async_send_goal(goal_msg, send_goal_options);
+
+    navigating_ = true; // Set immediately after sending the goal
+
     RCLCPP_INFO(this->get_logger(), "Sent navigation goal to cluster centroid (%.2f, %.2f)", safe_goal.x, safe_goal.y);
   }
 };
