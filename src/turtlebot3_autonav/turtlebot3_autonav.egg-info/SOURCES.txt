@@ -5,8 +5,8 @@ launch/bringup_sim.launch.py
 launch/nav2.launch.py
 launch/slam.launch.py
 resource/turtlebot3_autonav
+scripts/initial_pose_pub.py
 turtlebot3_autonav/__init__.py
-turtlebot3_autonav/initial_pose_pub.py
 turtlebot3_autonav.egg-info/PKG-INFO
 turtlebot3_autonav.egg-info/SOURCES.txt
 turtlebot3_autonav.egg-info/dependency_links.txt

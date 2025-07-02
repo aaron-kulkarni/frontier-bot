@@ -6,12 +6,13 @@ package_name = 'turtlebot3_autonav'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(exclude=['test']),
+    packages=find_packages(exclude=['test']) + ['turtlebot3_autonav'],
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob.glob('launch/*.launch.py')),
     ],
+    scripts=['scripts/initial_pose_pub.py'],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='aaronk',
@@ -21,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'initial_pose_pub = turtlebot3_autonav.initial_pose_pub:main',
+            'initial_pose_pub = scripts.initial_pose_pub:main',
         ],
     },
 )
