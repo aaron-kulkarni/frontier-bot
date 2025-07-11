@@ -2,7 +2,7 @@
 
 ## Overview
 
-**TurtleBot3 AutoNav** is a ROS 2 package that demonstrates basic autonomous exploration, mapping, and navigation in simulation using a TurtleBot3 (burger model). The project integrates standard ROS 2 tools (slam_toolbox, Nav2, Gazebo, and RViz2) and implements a simple frontier exploration algorithm for mapping unknown environments.
+FrontierBot is my implementation of a basic autonomous exploration, mapping, and navigation bot using a TurtleBot3 burger model. It integrates standard ROS 2 tools(slam_toolbox, Nav2, Gazebo, and Rviz2) and implements a frontier exploration algorithm for mapping unknown environments.
 
 ---
 
