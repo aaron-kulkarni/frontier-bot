@@ -1,7 +1,0 @@
-Metadata-Version: 2.1
-Name: turtlebot3-autonav
-Version: 0.0.0
-Summary: Autonomous TurtleBot3 simulation, mapping, and navigation launch package for ROS 2 Kilted.
-Maintainer: aaronk
-Maintainer-email: aaronk@todo.todo
-License: MIT
